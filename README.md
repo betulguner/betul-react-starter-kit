@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+## React Starting Project
+
+These codes are a starter kit containing the packages needed to start a React project.
+
 ## Available Scripts
 
 In the project directory, you can run:
