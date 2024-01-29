@@ -1,0 +1,9 @@
+$blue: blue;
+$pink: pink;
+
+.env{
+    background: $blue;
+    span{
+        background: $pink;
+    }
+}
