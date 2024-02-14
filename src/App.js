@@ -11,7 +11,11 @@ import Header from "./Header"
 import AddTodo from "./addTodo";
 import Todos from "./Todos";
 
-function Input(props, ref){
+import Homee from "./Homee";
+import SiteContext from './context/SiteContext';
+
+
+/*function Input(props, ref){
   return <input ref = {ref} type="text" {...props} />
 }
 Input = forwardRef(Input)
@@ -40,7 +44,7 @@ function reducer(state, action){
           search: action.value
         }
   }
-}
+}*/
 
 function App() {
 
@@ -71,7 +75,6 @@ function App() {
   const searchFunction = () => {
     alert('hello!')
   }*/
-
 
   /*const [activeTab, setActiveTab] = useState(1)
   return(
@@ -127,8 +130,8 @@ function App() {
     </>
   )*/
 
-
-    //TODO UYUGLAMASI
+  /*
+  //TODO UYGULAMASI
   const [state,dispatch] = useReducer(reducer, {
     todos: [],
     todo: '',
@@ -186,10 +189,75 @@ function App() {
       <Todos todos={filteredTodos}/>
 
     </>
-  )
+  )*/
+
+  /*
+    const [name,setName] = useState('')
+    const [inputVal, setInputVal] = useState(''); 
+    const [description, setDescription] = useState(''); 
+    const  [gender,setGender] = useState('2');
+
+    const categoryList = [
+      {key:1, value:'PHP'},
+      {key:2, value:'JavaScript'},
+      {key:3, value:'CSS'},
+      {key:4, value:'HTML'}
+    ]
+    const [categories, setCategories] = useState([])
+
+    const [rules,setRules] = useState(true)
+
+    return(
+      <>
+        <button onClick = {()=>{setName(inputVal)}}>Change Name</button>
+        <input type="text" value={inputVal} onChange={(e) => setInputVal(e.target.value)} style={{backgroundColor:'pink',margin:'20px',}}/>
+        <br/>
+        {name}
+        <br/>
+        
+
+        <textarea value={description} onChange={(e) => setDescription(e.target.value)}/>
+        <br/>
+        {description}
 
 
+        <select value={gender} onChange={e => setGender(e.target.value)}>
+          <option value=" ">Seçin</option>
+          <option value="1">Erkek</option>
+          <option value="2">Kadın</option>
+        </select>
+        <br/>
+        {gender}<br/>
 
-}
+
+        <select value={categories} multiple = {true} onChange={(e) => setCategories([...e.target.selectedOptions].map(option => +option.value))}>
+          {categoryList.map(category => (
+            <option value={category.key.toString()} key={category.key} >{category.value}</option>
+          ))}          
+        </select>
+        <br/>
+        <pre>{JSON.stringify(categories,null,2)}</pre>
+
+
+        <label>
+          <input type="checkbox" checked={rules} onChange={e => setRules(e.target.checked)}/>
+          Kuralları kabul ediyorum
+        </label>
+        <br/>
+        <button disabled={!rules}>Devam et</button> 
+      </>
+    );*/
+
+  
+
+  return(
+    <SiteContext.Provider>
+      <div class="App">
+        <Homee/>
+      </div>
+
+    </SiteContext.Provider>
+  );
+ } 
 
 export default App; 
