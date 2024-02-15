@@ -15,6 +15,13 @@ import Homee from "./Homee";
 import SiteContext from './context/SiteContext';
 import AuthProvider from './context/AuthContext';
 import { getPosts, getPostDetail,newPost } from "./services";
+import {Routes, Route, Link, NavLink} from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import Blog from "./pages/blog/Blog";
+import Categories from "./pages/blog/Categories";
+import Post from "./pages/blog/Post";
+import "./style.css";
 
 
 /*function Input(props, ref){
@@ -344,20 +351,40 @@ const submitHandle = e => {
  )*/
 
 
- useEffect(() => {
-  getPosts().then(res => console.log(res))
-  getPostDetail(2).then(res => console.log(res))
-  newPost({
-    userId: 3,
-    title: 'test',
-    body: 'testt'
-  }).then(res => console.log(res))
+  /*useEffect(() => {
+    getPosts().then(res => console.log(res))
+    getPostDetail(2).then(res => console.log(res))
+    newPost({
+      userId: 3,
+      title: 'test',
+      body: 'testt'
+    }).then(res => console.log(res))
  })
 
   return(
     <>
       App
     </>
-  )
+  )*/
+
+
+  return(
+    <>
+      <nav>
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/blog">Blog</NavLink>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/blog" element={<Blog/>}>
+          <Route path="post/:url" element={<Post/>}/>
+        </Route>
+        <Route paath="/blog/categories" element={<Categories/>}/>
+      </Routes>
+    </>
+  );
 }
 export default App; 
