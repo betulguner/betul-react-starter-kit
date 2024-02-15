@@ -14,6 +14,7 @@ import Todos from "./Todos";
 import Homee from "./Homee";
 import SiteContext from './context/SiteContext';
 import AuthProvider from './context/AuthContext';
+import { getPosts, getPostDetail,newPost } from "./services";
 
 
 /*function Input(props, ref){
@@ -343,11 +344,20 @@ const submitHandle = e => {
  )*/
 
 
-return(
-  <>
-    App
-  </>
-)
+ useEffect(() => {
+  getPosts().then(res => console.log(res))
+  getPostDetail(2).then(res => console.log(res))
+  newPost({
+    userId: 3,
+    title: 'test',
+    body: 'testt'
+  }).then(res => console.log(res))
+ })
 
+  return(
+    <>
+      App
+    </>
+  )
 }
 export default App; 
