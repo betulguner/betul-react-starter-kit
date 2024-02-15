@@ -1,7 +1,7 @@
 //import logo from "./logo.svg" //şu anda logo dizin altında olmadığı için çalışmadı
 // <img src={logo} alt=""> </img>    bunu div in içinde tanımlıyoruz.
 
-import {createElement, useState, useRef, forwardRef, useReducer, useCallback, useMemo} from "react"
+import {createElement, useState, useRef, forwardRef, useReducer, useCallback, useMemo, useEffect} from "react"
 //import './style.scss';
 import './tailwind.css'
 import Button from "./components/Button";
@@ -13,6 +13,7 @@ import Todos from "./Todos";
 
 import Homee from "./Homee";
 import SiteContext from './context/SiteContext';
+import AuthProvider from './context/AuthContext';
 
 
 /*function Input(props, ref){
@@ -249,15 +250,104 @@ function App() {
     );*/
 
   
-
+  /*         
   return(
     <SiteContext.Provider>
-      <div class="App">
-        <Homee/>
-      </div>
-
+      <AuthProvider>
+        <div class="App">
+          <Homee/>
+        </div>
+      </AuthProvider>
     </SiteContext.Provider>
   );
- } 
+  */
 
+/*const [name, setName] = useState('duyan') 
+const [avatar, setAvatar] = useState(false) 
+const [users,setUsers] = useState(false)
+
+const addPost = data => {
+
+  const headers = new Headers()
+  headers.append('Content-type', 'application/json')
+  headers.append('Authorization', 'Bearer duhan123abc')
+
+  const formData = new FormData()
+  formData.append('userId',data.userID)
+  formData.append('title',data.title)
+  formData.append('body',data.body)
+
+
+  fetch('https://jsonplaceholder.typicode.com/posts', {
+    method: 'POST',
+    //body: JSON.stringify(data),
+    body: formData,
+    headers: headers
+    }
+  )
+  .then(res => res.json)
+  .then(data => console.log(data))
+  .catch(err => console.log(err))
+}
+
+useEffect(() => {
+  fetch('https://jsonplaceholder.typicode.com/users')
+  .then(res => {
+    if(res.ok && res.status == 200){
+      return res.json()
+    }
+  })
+  .then(data => setUsers(data))
+  .catch(err => console.log(err))
+
+  addPost({
+    userID: 3,
+    title: 'love of duyan',
+    body:'Content of the post'
+  })
+}, [])
+
+const submitHandle = e => {
+  e.preventDefault()
+  const data = {name,avatar}
+  const formData = new FormData()
+  formData.append('name',name)
+  formData.append('avatar',avatar)
+
+  fetch(('https://jsonplaceholder.typicode.com/users'),{
+    method:'POST',
+    body:formData
+  })
+  console.log('submit edildi')
+}
+
+ return(
+  <>
+
+    <form onSubmit={submitHandle}>
+      <input type="text" name="name" value={name} onChange={e => setName(e.target.value)}/> <br/>
+      <input type="file" name="avatar" onChange={e => setAvatar(e.target.files[0])}/> <br/>
+      <button type="submit" disabled={!name || !avatar}>Kaydet</button> <br/>     
+    </form>
+
+      <h1>User List</h1>
+      <ul>
+      {users && users.map(user => (
+        <li key={user.id}>
+          {user.name}
+        </li>
+      ))}
+    </ul>
+
+  </>
+ )*/
+
+
+return(
+  <>
+    App
+  </>
+)
+
+}
 export default App; 
