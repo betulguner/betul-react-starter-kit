@@ -5,11 +5,15 @@ import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import './style.css'
 
+import {AuthProvider} from "./context/AuthContext2";
+
 const root = ReactDOM.createRoot(document.getElementById('root')); 
 //ReactDOM.createRoot(document.getElementById('root'));
 root.render (
     <BrowserRouter>
-        <App />
+        <AuthProvider>
+            <App />
+        </AuthProvider>
     </BrowserRouter>
 );
 

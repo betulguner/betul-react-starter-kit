@@ -1,7 +1,15 @@
 export default function Blog(){
     return(
         <div>
-            Blog page
+            <ul>
+                <li>
+                    <a href="#">blog1</a>
+                </li>
+
+                <li>
+                    <a href="#">blog2</a>
+                </li>
+            </ul>
         </div>
     )
 }

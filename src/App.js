@@ -18,9 +18,16 @@ import { getPosts, getPostDetail,newPost } from "./services";
 import {Routes, Route, Link, NavLink} from "react-router-dom";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
-import Blog from "./pages/blog/Blog";
+import BlogLayout from "./pages/blog";
 import Categories from "./pages/blog/Categories";
 import Post from "./pages/blog/Post";
+import Blog from "./pages/blog/Blog";
+import Page404 from "./pages/blog/404";
+import Profile from "./pages/blog/Profile";
+import AuthLayout from "./pages/auth/AuthLayout";
+import Login from "./pages/auth/Login";
+import PrivateRoute from "./components/PrivateRoute";
+
 import "./style.css";
 
 
@@ -256,7 +263,6 @@ function App() {
         <button disabled={!rules}>Devam et</button> 
       </>
     );*/
-
   
   /*         
   return(
@@ -374,15 +380,24 @@ const submitHandle = e => {
         <NavLink to="/">Home</NavLink>
         <NavLink to="/contact">Contact</NavLink>
         <NavLink to="/blog">Blog</NavLink>
+        <NavLink to="/profile">Profile</NavLink>
       </nav>
 
       <Routes>
         <Route path="/" element={<Home/>} />
         <Route path="/contact" element={<Contact/>} />
-        <Route path="/blog" element={<Blog/>}>
-          <Route path="post/:url" element={<Post/>}/>
+        <Route path="/blog" element={<BlogLayout/>}>
+          <Route index={true} element = {<Blog/>}/>
+          <Route path="categories" element={<Categories/>}/>
+          <Route path="post/:urlll" element={<Post/>}/>
+          <Route path="*" element = {<Page404/>}/>
         </Route>
-        <Route paath="/blog/categories" element={<Categories/>}/>
+        <Route path="/auth" element={<AuthLayout/>}>
+          <Route path = "login" element={<Login/>}/>
+        </Route>
+        <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
+        <Route path="*" element = {<Page404/>}/>
+
       </Routes>
     </>
   );
