@@ -3,7 +3,7 @@
 
 import {createElement, useState, useRef, forwardRef, useReducer, useCallback, useMemo, useEffect} from "react"
 //import './style.scss';
-import './tailwind.css'
+//import './tailwind.css'
 import Button from "./components/Button";
 import Tab from "./components/Tab"
 import Test from "./test"
@@ -13,7 +13,6 @@ import Todos from "./Todos";
 
 import Homee from "./Homee";
 import SiteContext from './context/SiteContext';
-import AuthProvider from './context/AuthContext';
 import { getPosts, getPostDetail,newPost } from "./services";
 import {Routes, Route, Link, NavLink} from "react-router-dom";
 import Home from "./pages/Home";
@@ -25,6 +24,7 @@ import Blog from "./pages/blog/Blog";
 import Page404 from "./pages/blog/404";
 import Profile from "./pages/blog/Profile";
 import AuthLayout from "./pages/auth/AuthLayout";
+import HomeLayout from "./pages/blog/HomeLayout";
 import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
@@ -356,7 +356,6 @@ const submitHandle = e => {
   </>
  )*/
 
-
   /*useEffect(() => {
     getPosts().then(res => console.log(res))
     getPostDetail(2).then(res => console.log(res))
@@ -375,31 +374,27 @@ const submitHandle = e => {
 
 
   return(
-    <>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-        <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/profile">Profile</NavLink>
-      </nav>
-
+    <>            
       <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/contact" element={<Contact/>} />
-        <Route path="/blog" element={<BlogLayout/>}>
-          <Route index={true} element = {<Blog/>}/>
-          <Route path="categories" element={<Categories/>}/>
-          <Route path="post/:urlll" element={<Post/>}/>
-          <Route path="*" element = {<Page404/>}/>
+        <Route path="/" element={<HomeLayout/>} >
+            <Route index={true} element = {<Home/>} />
+            <Route path="contact" element={<Contact/>} />
+            <Route path="blog" element={<BlogLayout/>}>
+            <Route index={true} element = {<Blog/>}/>
+            <Route path="categories" element={<Categories/>}/>
+            <Route path="post/:urlll" element={<Post/>}/>
+            <Route path="*" element = {<Page404/>}/>
+            </Route>
         </Route>
+
         <Route path="/auth" element={<AuthLayout/>}>
-          <Route path = "login" element={<Login/>}/>
+            <Route path = "login" element={<Login/>}/>
         </Route>
         <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
         <Route path="*" element = {<Page404/>}/>
-
       </Routes>
     </>
+   
   );
 }
 export default App; 
