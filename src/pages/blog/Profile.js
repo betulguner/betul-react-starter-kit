@@ -1,4 +1,5 @@
 import { useAuth } from "../../context/AuthContext2";
+import { Helmet } from "react-helmet";
 
 export default function Profile(){
 
@@ -9,6 +10,9 @@ export default function Profile(){
 
     return(
         <div>
+            <Helmet>
+                <title>Profil</title>
+            </Helmet>
             Profile page <br/>
             <button onClick={logoutHandle}>Çıkış</button>
         </div>

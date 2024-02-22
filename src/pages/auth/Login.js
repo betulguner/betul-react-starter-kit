@@ -1,5 +1,6 @@
 import { useAuth } from "../../context/AuthContext2";
 import { useNavigate, useLocation } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 export default function Login(){
     
@@ -24,6 +25,9 @@ export default function Login(){
 
     return (
         <div>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             Login Page <br/>
             <button onClick={loginHandle}>Giriş yap</button>
         </div>
