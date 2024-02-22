@@ -14,7 +14,7 @@ export const AuthProvider = ({children}) => {
         <Context.Provider value={data}>
             {children}
         </Context.Provider>
-    )
-}
+    );
+};
 
 export const useAuth = () => useContext(Context)

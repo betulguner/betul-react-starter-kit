@@ -4,6 +4,7 @@
 import {createElement, useState, useRef, forwardRef, useReducer, useCallback, useMemo, useEffect} from "react"
 //import './style.scss';
 //import './tailwind.css'
+import "./style.css";
 import Button from "./components/Button";
 import Tab from "./components/Tab"
 import Test from "./test"
@@ -14,7 +15,7 @@ import Todos from "./Todos";
 import Homee from "./Homee";
 import SiteContext from './context/SiteContext';
 import { getPosts, getPostDetail,newPost } from "./services";
-import {Routes, Route, Link, NavLink} from "react-router-dom";
+
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import BlogLayout from "./pages/blog";
@@ -28,7 +29,10 @@ import HomeLayout from "./pages/blog/HomeLayout";
 import Login from "./pages/auth/Login";
 import PrivateRoute from "./components/PrivateRoute";
 
-import "./style.css";
+import { generatePath, useRoutes } from "react-router-dom";
+import routes from "./routes";
+
+import {url} from './utils';
 
 
 /*function Input(props, ref){
@@ -373,28 +377,12 @@ const submitHandle = e => {
   )*/
 
 
-  return(
-    <>            
-      <Routes>
-        <Route path="/" element={<HomeLayout/>} >
-            <Route index={true} element = {<Home/>} />
-            <Route path="contact" element={<Contact/>} />
-            <Route path="blog" element={<BlogLayout/>}>
-            <Route index={true} element = {<Blog/>}/>
-            <Route path="categories" element={<Categories/>}/>
-            <Route path="post/:urlll" element={<Post/>}/>
-            <Route path="*" element = {<Page404/>}/>
-            </Route>
-        </Route>
+  /*return useRoutes(routes)*/
 
-        <Route path="/auth" element={<AuthLayout/>}>
-            <Route path = "login" element={<Login/>}/>
-        </Route>
-        <Route path="/profile" element={<PrivateRoute><Profile/></PrivateRoute>}/>
-        <Route path="*" element = {<Page404/>}/>
-      </Routes>
-    </>
-   
-  );
+  //console.log(generatePath('post/:urlll',{urlll: 'test-url'}))
+  //url('notFound')
+  url('home.blog.categories')
+  return useRoutes(routes)
+
 }
 export default App; 
