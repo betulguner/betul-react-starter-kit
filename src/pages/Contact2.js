@@ -4,7 +4,7 @@ export default function Contact(){
     return(
         <div>
             <Helmet>
-                <title>Contact</title>
+                <title>Contact2</title>
             </Helmet>
             Contact page
 
