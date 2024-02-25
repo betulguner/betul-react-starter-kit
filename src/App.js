@@ -34,6 +34,11 @@ import routes from "./routes";
 
 import {url} from './utils';
 
+import AddToDo from "./todo/add";
+import TodoList from "./todo/list";
+import Headerr from './todo/header';
+import Modal from './todo/modal';
+
 
 /*function Input(props, ref){
   return <input ref = {ref} type="text" {...props} />
@@ -379,10 +384,27 @@ const submitHandle = e => {
 
   /*return useRoutes(routes)*/
 
-  //console.log(generatePath('post/:urlll',{urlll: 'test-url'}))
+  /*//console.log(generatePath('post/:urlll',{urlll: 'test-url'}))
   //url('notFound')
   url('home.blog.categories')
-  return useRoutes(routes)
+  return useRoutes(routes)*/
+
+
+
+  ////REDUX//////
+  const [language, setLanguage] = useState('tr') //todo
+  const [dark, setDark] = useState(true) //todo
+  const [modal,setModal] = useState(false)
+  const close = () => setModal(false)
+
+  return(
+    <main>
+      {modal && <Modal close={close} name={modal.name} data={modal.data} />}
+      <Headerr /> <hr/>
+      <AddToDo  />
+      <TodoList setModal = {setModal} />
+    </main>
+  )
 
 
 
