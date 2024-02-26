@@ -20,7 +20,7 @@ export default function Headerr( ){
             {!user && (
                 <nav>
                     <button onClick={() => loginHandle({id:1, username:'betülgüner'})}>betülgüner olarak giriş yap</button>
-                    <button onClick={() => loginHandle({id:2, username:'duhanaktan'})}>duhanaktan olarak giriş yap</button>
+                    <button onClick={() => loginHandle({id:2, username:'X'})}>X olarak giriş yap</button>
                 </nav>
             )}
 

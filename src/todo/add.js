@@ -1,11 +1,12 @@
 import { useState } from "react";
 import {nanoid} from "nanoid";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {addTodo} from "../stores/todo";
 
-export default function AddToDo({user}){
+export default function AddToDo(){
 
     const dispatch = useDispatch()
+    const {user} = useSelector(state => state.auth)
     const [todo, setTodo] = useState('')
     const submitHandle = e => {
         e.preventDefault()

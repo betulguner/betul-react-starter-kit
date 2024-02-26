@@ -38,6 +38,7 @@ import AddToDo from "./todo/add";
 import TodoList from "./todo/list";
 import Headerr from './todo/header';
 import Modal from './todo/modal';
+import {useSelector} from "react-redux";
 
 
 /*function Input(props, ref){
@@ -394,15 +395,14 @@ const submitHandle = e => {
   ////REDUX//////
   const [language, setLanguage] = useState('tr') //todo
   const [dark, setDark] = useState(true) //todo
-  const [modal,setModal] = useState(false)
-  const close = () => setModal(false)
+  const {open: isModalOpen} = useSelector(state => state.modal)
 
   return(
     <main>
-      {modal && <Modal close={close} name={modal.name} data={modal.data} />}
+      {isModalOpen && <Modal />}
       <Headerr /> <hr/>
       <AddToDo  />
-      <TodoList setModal = {setModal} />
+      <TodoList />
     </main>
   )
 
